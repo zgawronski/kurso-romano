@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper } from './UsersListItem.styles';
+import { Wrapper, AvaDiv, NameDiv } from './UsersListItem.styles';
 import Button from 'components/atoms/Button/Button';
 
 const showIndex = (index) => alert(`this is student #${index + 1}`);
 
 const UsersListItem = ({ index, userData: { average, name, attendance = '0%' } }) => (
   <Wrapper>
-    <div>{average}</div>
-    <div>
+    <AvaDiv>{average}</AvaDiv>
+    <NameDiv>
       <p>
         {name}
-        <Button onClick={() => showIndex(index)} />
+        <Button onMouseEnter={() => showIndex(index)} />
       </p>
       <p>{attendance}</p>
-    </div>
+    </NameDiv>
   </Wrapper>
 );
 
