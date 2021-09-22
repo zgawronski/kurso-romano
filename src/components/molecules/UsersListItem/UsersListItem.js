@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 import { Wrapper } from './UsersListItem.styles';
 import Button from 'components/atoms/Button/Button';
 
-const UsersListItem = ({ userData: { average, name, attendance = '0%' } }) => (
+const showIndex = (index) => alert(`this is student #${index + 1}`);
+
+const UsersListItem = ({ index, userData: { average, name, attendance = '0%' } }) => (
   <Wrapper>
     <div>{average}</div>
     <div>
-      <p>{name}</p>
+      <p>
+        {name}
+        <Button onClick={() => showIndex(index)} />
+      </p>
       <p>{attendance}</p>
     </div>
-    <Button />
   </Wrapper>
 );
 
