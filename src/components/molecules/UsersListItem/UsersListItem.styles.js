@@ -10,28 +10,41 @@ export const Wrapper = styled.li`
     bottom: 0;
     width: 100%;
     height: 1px;
-    background-color: ${({ theme }) => theme.colors.grey};
+    background-color: lightgrey;
   }
 `;
 
-export const AvaDiv = styled.div`
+export const StyledAverage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.success};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  color: ${({ theme }) => theme.colors.white};
+  font-weight: bold;
+  background-color: ${({ theme, value }) => {
+    if (value > 4) return theme.colors.success;
+    if (value > 3) return theme.colors.warning;
+    if (value > 2) return theme.colors.error;
+    return theme.colors.grey;
+  }};
 `;
 
-export const NameDiv = styled.div`
-p {
-  display: flex;
-  justify-content: space-between
-    font-size: ${({ theme }) => theme.fontSize.l}
-    margin-left: 10px;
-    button {
-      margin-left: 10px;
-    }
+export const StyledInfo = styled.div`
+  padding: 25px 20px;
+  p {
+    margin: 0;
+    color: ${({ theme }) => theme.colors.darkGrey};
+  }
+  p:first-child {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: ${({ theme }) => theme.fontSize.l};
+  }
+  p:last-child {
+    font-size: ${({ theme }) => theme.fontSize.m};
   }
 `;
