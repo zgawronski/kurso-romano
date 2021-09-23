@@ -2,7 +2,7 @@ export const users = [
   {
     name: 'Jacek Placek',
     attendance: '52%',
-    average: '4.1',
+    average: '3.1',
   },
   {
     name: 'Niewiem Kto',
@@ -17,7 +17,7 @@ export const users = [
   {
     name: 'Wojciech Nieszczęsny',
     attendance: '66%',
-    average: '4.3',
+    average: '2.3',
   },
   {
     name: 'Hugo Kołontaj',
