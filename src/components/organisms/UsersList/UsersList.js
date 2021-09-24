@@ -1,37 +1,10 @@
-import React, { useState } from 'react';
-import { users as usersData } from 'data/users';
+import React from 'react';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
-import { Wrapper, StyledList } from './UsersList.styles';
-import FormField from 'components/molecules/FormField/FormField';
-import { StyledTitle } from './UsersList.styles';
-import { Button } from 'components/atoms/Button/Button';
+import { Wrapper, StyledList, StyledTitle } from './UsersList.styles';
 
-const UsersList = () => {
-  const [users, setUsers] = useState(usersData);
-  const [formValues, setFormValues] = useState({
-    name: '',
-    attendance: '',
-    average: '',
-  });
-
-  const deleteUser = (name) => {
-    const filteredUsers = users.filter((user) => user.name !== name);
-    setUsers(filteredUsers);
-  };
-
-  const handleInputChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  };
-
+const UsersList = ({ users, deleteUser }) => {
   return (
     <>
-      <Wrapper>
-        <StyledTitle>Add new students</StyledTitle>
-        <FormField label="Name" id="name" name="name" value={formValues.name} onChange={handleInputChange} />
-        <FormField label="Attendance" id="attendance" name="attendance" />
-        <FormField label="Average" id="average" name="average" />
-        <Button>Add</Button>
-      </Wrapper>
       <Wrapper>
         <StyledTitle>Students list</StyledTitle>
         <StyledList>
