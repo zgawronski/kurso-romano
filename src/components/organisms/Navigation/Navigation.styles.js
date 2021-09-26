@@ -12,13 +12,14 @@ export const Wrapper = styled.nav`
 `;
 
 export const Logo = styled.div`
-  background-color: ${({ theme }) => theme.colors.darkgrey};
+  background-color: ${({ theme }) => theme.colors.darkGrey};
   width: 100%;
   height: 60px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 30px;
+
   h1 {
     font-size: 15px;
     color: ${({ theme }) => theme.colors.white};

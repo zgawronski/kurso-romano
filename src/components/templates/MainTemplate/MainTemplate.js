@@ -5,7 +5,8 @@ import { Wrapper } from './MainTemplate.styles';
 const MainTemplate = ({ children }) => {
   return (
     <Wrapper>
-      <Navigation />?{children}
+      <Navigation />
+      {children}
     </Wrapper>
   );
 };
