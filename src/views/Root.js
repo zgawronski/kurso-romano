@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Dashboard from 'components/organisms/Dashboard/Dashboard';
+import Dashboard from './Dashboard';
 import { users as usersData } from 'data/users';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.style';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import AddUser from 'components/organisms/Form/Form';
+import AddUser from './AddUser';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 
 const initialFormState = {
