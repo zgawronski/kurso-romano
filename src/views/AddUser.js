@@ -4,6 +4,8 @@ import { Button } from 'components/atoms/Button/Button';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
 import { UsersContext } from 'providers/UsersProvider';
+import { useWindowSize } from 'hooks/useWindowSize';
+import { getByTitle } from '@testing-library/dom';
 
 const initialFormState = {
   name: '',
@@ -13,18 +15,25 @@ const initialFormState = {
   error: '',
 };
 
+const actionTypes = {
+  inputChange: 'INPUT CHANGE',
+  clearValues: 'CLEAR VALUES',
+  consentToggle: 'CONSENT TOGGLE',
+  throwError: 'THROW ERROR',
+};
+
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'INPUT CHANGE':
+    case actionTypes.inputChange:
       return {
         ...state,
         [action.field]: action.value,
       };
-    case 'CLEAR VALUES':
+    case actionTypes.clearValues:
       return initialFormState;
-    case 'CONSENT TOGGLE':
+    case actionTypes.consentToggle:
       return { ...state, consent: !state.consent };
-    case 'THROW ERROR':
+    case actionTypes.throwError:
       return {
         ...state,
         error: action.errorValue,
@@ -37,10 +46,11 @@ const reducer = (state, action) => {
 const AddUser = () => {
   const [formValues, dispatch] = useReducer(reducer, initialFormState);
   const { handleAddUser } = useContext(UsersContext);
+  const dimensions = useWindowSize();
 
   const handleInputChange = (e) => {
     dispatch({
-      type: 'INPUT CHANGE',
+      type: actionTypes.inputChange,
       field: e.target.name,
       value: e.target.value,
     });
@@ -50,19 +60,28 @@ const AddUser = () => {
     e.preventDefault();
     if (formValues.consent) {
       handleAddUser(formValues);
-      dispatch({ type: 'CLEAR VALUES' });
+      dispatch({ type: actionTypes.clearValues });
     } else {
-      dispatch({ type: 'THROW ERROR', errorValue: 'You need to give consent' });
+      dispatch({ type: actionTypes.throwError, errorValue: 'You need to give consent' });
     }
   };
 
   return (
     <ViewWrapper as="form" onSubmit={handleSubmitUser}>
       <Title>Add new students</Title>
+      <Title>Screen width: {dimensions.width}px</Title>
+      <Title>Screen height: {dimensions.height}px</Title>
       <FormField label="Name" id="name" name="name" value={formValues.name} onChange={handleInputChange} />
       <FormField label="Attendance" id="attendance" name="attendance" value={formValues.attendance} onChange={handleInputChange} />
       <FormField label="Average" id="average" name="average" value={formValues.average} onChange={handleInputChange} />
-      <FormField label="Consent" id="consent" name="consent" type="checkbox" onChange={() => dispatch({ type: 'CONSENT TOGGLE' })} />
+      <FormField
+        label="Consent"
+        id="consent"
+        name="consent"
+        value={formValues.average}
+        type="checkbox"
+        onChange={() => dispatch({ type: actionTypes.consentToggle })}
+      />
       <Button type="submit">Add</Button>
       {formValues.error ? <p>{formValues.error}</p> : null}
     </ViewWrapper>
