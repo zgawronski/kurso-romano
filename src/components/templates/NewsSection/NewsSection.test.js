@@ -2,23 +2,11 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
-import NewsSection from './NewsSection';
+import NewsSection, { query } from './NewsSection';
 import { renderWithProviders } from 'helpers/renderWithProviders';
 import '@testing-library/jest-dom';
 
 const mock = new MockAdapter(axios);
-const query = `
-                {
-                    allArticles {
-                        id
-                        title
-                        category
-                        content
-                        image {
-                                url
-                        }
-                    }
-                }`;
 
 describe('News Section', () => {
   afterEach(() => {

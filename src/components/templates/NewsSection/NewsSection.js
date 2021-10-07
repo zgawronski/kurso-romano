@@ -3,16 +3,7 @@ import { Button } from 'components/atoms/Button/Button';
 import { NewsSectionHeader, Wrapper, ArticleWrapper, TitleWrapper, ContentWrapper } from './NewsSection.styles';
 import axios from 'axios';
 
-const NewsSection = () => {
-  const [articles, setArticles] = useState([]);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    axios
-      .post(
-        'https://graphql.datocms.com/',
-        {
-          query: `
+export const query = `
                 {
                     allArticles {
                         id
@@ -23,7 +14,18 @@ const NewsSection = () => {
                                 url
                         }
                     }
-                }`,
+                }`;
+
+const NewsSection = () => {
+  const [articles, setArticles] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    axios
+      .post(
+        'https://graphql.datocms.com/',
+        {
+          query,
         },
         {
           headers: {
