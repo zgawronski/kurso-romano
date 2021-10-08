@@ -4,7 +4,6 @@ import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import NewsSection, { query } from './NewsSection';
 import { renderWithProviders } from 'helpers/renderWithProviders';
-import '@testing-library/jest-dom';
 
 const mock = new MockAdapter(axios);
 
