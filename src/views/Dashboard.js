@@ -4,6 +4,8 @@ import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Link, useParams } from 'react-router-dom';
 import UsersList from 'components/organisms/UsersList/UsersList';
 
+const NavGroups = styled.nav``;
+
 const Dashboard = () => {
   const [students, setStudents] = useState([]);
   const [groups, setGroups] = useState([]);
@@ -25,13 +27,13 @@ const Dashboard = () => {
 
   return (
     <ViewWrapper>
-      <nav>
+      <NavGroups>
         {groups.map((group) => (
           <Link key={group} to={`/group/${group}`}>
             {group}{' '}
           </Link>
         ))}
-      </nav>
+      </NavGroups>
       <UsersList users={students} />
     </ViewWrapper>
   );
