@@ -9,7 +9,7 @@ const Dashboard = () => {
   const { groups } = useStudents();
   const { id } = useParams();
 
-  if (!id && groups.length > 0) return <Redirect to={`/groups/${groups[0]}`} />;
+  if (!id && groups.length > 0) return <Redirect to={`/group/${groups[0]}`} />;
 
   return (
     <Wrapper>

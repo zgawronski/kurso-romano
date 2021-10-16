@@ -9,7 +9,7 @@ export const useStudents = ({ groupId = '' } = {}) => {
     (async () => {
       try {
         const result = await axios.get('/groups');
-        setGroups(result.setStudentsdata.groups);
+        setGroups(result.data.groups);
       } catch (e) {
         console.log(e);
       }
