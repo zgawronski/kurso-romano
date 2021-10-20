@@ -18,6 +18,7 @@ const SearchBar = () => {
     if (!searchPhrase) return;
     getMatchingStudents(searchPhrase);
   }, [searchPhrase, getMatchingStudents]);
+
   return (
     <SearchBarWrapper>
       <StatusInfo>
@@ -27,7 +28,7 @@ const SearchBar = () => {
         </p>
       </StatusInfo>
       <SearchWrapper>
-        <Input onChange={(e) => setSearchPhrase(e.target.value)} value={searchPhrase} name="searchPhrase" />
+        <Input onChange={(e) => setSearchPhrase(e.target.value)} value={searchPhrase} name="search" id="search" />
         {searchPhrase && matchingStudent.length ? (
           <SearchResults>
             {matchingStudent.map((student) => (
