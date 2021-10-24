@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
+import StudentListItem from 'components/molecules/StudentsListItem/StudentsListItem';
 import { StyledList } from './StudentsList.styles';
 import { Title } from 'components/atoms/Title/Title';
 import { useParams } from 'react-router-dom';
@@ -22,7 +22,7 @@ const StudentsList = () => {
       <Title>Students list</Title>
       <StyledList>
         {students.map((userData) => (
-          <UsersListItem key={userData.name} userData={userData} />
+          <StudentListItem key={userData.name} userData={userData} />
         ))}
       </StyledList>
     </>
