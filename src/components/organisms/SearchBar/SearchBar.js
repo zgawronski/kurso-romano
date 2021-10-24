@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
 import { SearchBarWrapper, StatusInfo, SearchResults, SearchWrapper, SearchResultItem } from './SearchBar.styles';
 import { useCombobox } from 'downshift';
@@ -14,7 +14,7 @@ const SearchBar = () => {
     setMatchingStudent(students);
   }, 500);
 
-  const { isOpen, getToggleButtonProps, getLabelProps, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
+  const { isOpen, getMenuProps, getInputProps, getComboboxProps, highlightedIndex, getItemProps } = useCombobox({
     items: matchingStudent,
     onInputValueChange: getMatchingStudents,
   });
