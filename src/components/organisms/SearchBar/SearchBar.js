@@ -29,7 +29,7 @@ const SearchBar = () => {
       </StatusInfo>
       <SearchWrapper {...getComboboxProps()}>
         <Input {...getInputProps()} name="Search" id="Search" placeholder="Search" />
-        <SearchResults isVisible={isOpen && matchingStudent.length > 0} {...getMenuProps()}>
+        <SearchResults isVisible={isOpen && matchingStudent.length > 0} {...getMenuProps()} aria-label="results">
           {isOpen &&
             matchingStudent.map((item, index) => (
               <SearchResultItem isHighlighted={highlightedIndex === index} {...getItemProps({ item, index })} key={item.id}>
