@@ -2,14 +2,14 @@ import { useCallback } from 'react';
 import axios from 'axios';
 
 export const useStudents = () => {
-  const getGroups = async () => {
+  const getGroups = useCallback(async () => {
     try {
       const result = await axios.get('/groups');
       return result.data.groups;
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
   const getStudents = useCallback(async (groupId) => {
     try {

@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 
 const AllTheProviders = ({ children }) => {
-  return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options });
