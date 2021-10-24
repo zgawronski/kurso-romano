@@ -1,14 +1,9 @@
 import StudentsListItem from './StudentsListItem';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: 'Components/Molecules/StudentsListItem',
   component: StudentsListItem,
-};
-
-const mockedData = {
-  name: 'Adam Romański',
-  attendance: '55%',
-  average: '3.5',
 };
 
 const Template = (args) => <StudentsListItem {...args} />;
