@@ -5,7 +5,7 @@ import { ModalWrapper } from './Modal.styles';
 
 const modalContainer = document.getElementById('modal-container');
 
-const Modal = (handleClose) => {
+const Modal = ({ handleClose, children }) => {
   const modalNode = document.createElement('div');
 
   useEffect(() => {
@@ -18,7 +18,8 @@ const Modal = (handleClose) => {
 
   return ReactDom.createPortal(
     <ModalWrapper>
-      Hejka naklejka<Button onClick={handleClose}>Close modal</Button>
+      {children}
+      <Button onClick={handleClose}>Close modal</Button>
     </ModalWrapper>,
     modalNode
   );

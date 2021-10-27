@@ -8,6 +8,7 @@ import useModal from 'components/organisms/Modal/useModal';
 
 const Dashboard = () => {
   const [groups, setGroups] = useState([]);
+  const [currentStudent, setCurrentStudent] = useState([]);
   const { getGroups } = useStudents();
   const { id } = useParams();
   const { Modal, isOpen, handleOpenModal, handleCloseModal } = useModal();
@@ -20,7 +21,8 @@ const Dashboard = () => {
   }, [getGroups]);
 
   const handleOpenStudentDetails = (id) => {
-    console.log(id);
+    setCurrentStudent(id);
+    handleOpenModal();
   };
 
   if (!id && groups.length > 0) return <Redirect to={`/group/${groups[0]}`} />;
@@ -38,8 +40,8 @@ const Dashboard = () => {
         </nav>
       </TitleWrapper>
       <GroupWrapper>
-        <StudentsList />
-        {isOpen ? <Modal /> : null}
+        <StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
+        {isOpen ? <Modal handleClose={handleCloseModal}>{currentStudent}</Modal> : null}
       </GroupWrapper>
     </Wrapper>
   );

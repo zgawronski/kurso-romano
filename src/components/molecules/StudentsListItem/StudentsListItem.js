@@ -5,10 +5,10 @@ import Button from 'components/atoms/DeleteButton/DeleteButton';
 import { UserShape } from 'types';
 import { UsersContext } from 'providers/UsersProvider';
 
-const StudentListItem = ({ userData: { average, name, attendance = '0%' } }) => {
+const StudentListItem = ({ userData: { average, name, attendance = '0%' }, ...props }) => {
   const { deleteUser } = useContext(UsersContext);
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <StyledAverage value={average}>{average}</StyledAverage>
       <StyledInfo>
         <p>
